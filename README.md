@@ -3,7 +3,7 @@ ETCD Scheduler for DC/OS
 
 # Etcd scheduler for DC/OS
 
-![Image of schduler](https://raw.githubusercontent.com/minyk/dcos-etcd/etcd/frameworks/etcd/docs/etcd-scheduler.png)
+![Image of schduler](frameworks/etcd/docs/etcd-scheduler.png)
 
 # How to use 
 ## Build
