@@ -34,3 +34,9 @@ $ ./build.sh
 ## Use pre-built docker image
 
 TBD
+
+# Limitations
+* ETCD Docker image is static: `quay.io/coreos/etcd:v3.2`
+* ETCD node count is static: `3`
+* Scheduler does not provide cli extension.
+* Scheduler does not provide endpoint to etcd. You can find etcd at `etcd-0-node.<framework-name>.autoip.dcos.thisdcos.directory`.
