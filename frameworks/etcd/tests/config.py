@@ -1,0 +1,4 @@
+PACKAGE_NAME = 'etcd'
+SERVICE_NAME = 'etcd'
+DEFAULT_TASK_COUNT = 1
+

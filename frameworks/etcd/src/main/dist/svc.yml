@@ -1,0 +1,36 @@
+name: {{FRAMEWORK_NAME}}
+scheduler:
+  principal: {{FRAMEWORK_PRINCIPAL}}
+  user: {{FRAMEWORK_USER}}
+pods:
+  etcd:
+    uris:
+      - {{BOOTSTRAP_URI}}
+    count: 3
+    placement: {{NODE_PLACEMENT}}
+    container:
+      image-name: {{ETCD_IMAGE}}
+      networks:
+        {{VIRTUAL_NETWORK_NAME}}:
+          labels: {{VIRTUAL_NETWORK_PLUGIN_LABELS}}
+      rlimits:
+        RLIMIT_NOFILE:
+          soft: 65536
+          hard: 65536
+    tasks:
+      node:
+        goal: RUNNING
+        cmd: "./bootstrap -print-env=true -resolve-hosts etcd-0-node.${FRAMEWORK_HOST},etcd-1-node.${FRAMEWORK_HOST},etcd-2-node.${FRAMEWORK_HOST} && etcd --name ${TASK_NAME} --initial-advertise-peer-urls http://${MESOS_CONTAINER_IP}:2380 \
+                --listen-peer-urls http://${MESOS_CONTAINER_IP}:2380 \
+                --listen-client-urls http://${MESOS_CONTAINER_IP}:2379,http://127.0.0.1:2379 \
+                --advertise-client-urls http://${MESOS_CONTAINER_IP}:2379 \
+                --initial-cluster-token etcd-cluster-1 \
+                --initial-cluster etcd-0-node=http://etcd-0-node.${FRAMEWORK_HOST}:2380,etcd-1-node=http://etcd-1-node.${FRAMEWORK_HOST}:2380,etcd-2-node=http://etcd-2-node.${FRAMEWORK_HOST}:2380 \
+                --initial-cluster-state new"
+        cpus: {{NODE_CPUS}}
+        memory: {{NODE_MEM}}
+        ports:
+          client:
+            port: 2379
+          peer:
+            port: 2380
