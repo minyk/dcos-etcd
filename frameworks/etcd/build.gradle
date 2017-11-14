@@ -32,6 +32,7 @@ distZip.finalizedBy copyExecutor
 distributions {
     main {
         baseName = 'etcd-scheduler'
+        applicationName = 'etcd'
         version = ''
     }
 }

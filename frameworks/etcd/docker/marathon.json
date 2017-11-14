@@ -1,0 +1,79 @@
+{
+  "id": "/etcd",
+  "cpus": 1,
+  "mem": 1024,
+  "instances": 1,
+  "user": "root",
+  "labels": {
+    "DCOS_PACKAGE_FRAMEWORK_NAME": "etcd",
+    "MARATHON_SINGLE_INSTANCE_APP": "true",
+    "DCOS_SERVICE_NAME": "etcd",
+    "DCOS_SERVICE_PORT_INDEX": "0",
+    "DCOS_SERVICE_SCHEME": "http"
+  },
+  "env": {
+    "PACKAGE_NAME": "beta-etcd",
+    "PACKAGE_VERSION": "0.1",
+    "PACKAGE_BUILD_TIME_EPOCH_MS": "1510662692",
+    "FRAMEWORK_NAME": "etcd",
+    "SLEEP_DURATION": "1000",
+    "FRAMEWORK_USER": "root",
+    "FRAMEWORK_PRINCIPAL": "etcd",
+    "FRAMEWORK_LOG_LEVEL": "INFO",
+    "NODE_COUNT": "3",
+    "NODE_PLACEMENT": "hostname:UNIQUE",
+    "ETCD_IMAGE": "quay.io/coreos/etcd:v3.2",
+    "ENABLE_VIRTUAL_NETWORK": "yes",
+    "VIRTUAL_NETWORK_NAME": "dcos",
+    "NODE_CPUS": "1",
+    "NODE_MEM": "1024",
+    "NODE_DISK": "512",
+    "NODE_DISK_TYPE": "ROOT"
+  },
+  "upgradeStrategy": {
+    "minimumHealthCapacity": 0,
+    "maximumOverCapacity": 0
+  },
+  "healthChecks": [
+    {
+      "gracePeriodSeconds": 900,
+      "intervalSeconds": 30,
+      "portIndex": 0,
+      "timeoutSeconds": 30,
+      "maxConsecutiveFailures": 0,
+      "protocol": "HTTP",
+      "path": "/v1/plans/deploy"
+    },
+    {
+      "gracePeriodSeconds": 900,
+      "intervalSeconds": 30,
+      "portIndex": 0,
+      "timeoutSeconds": 30,
+      "maxConsecutiveFailures": 0,
+      "protocol": "HTTP",
+      "path": "/v1/plans/recovery"
+    }
+  ],
+  "portDefinitions": [
+    {
+      "labels": {
+        "VIP_0": "/api.etcd:80"
+      },
+      "name": "api",
+      "protocol": "tcp",
+      "port": 0
+    }
+  ],
+  "requirePorts": false,
+  "networks": [],
+  "fetch": [],
+  "constraints": [],
+  "container": {
+    "type": "MESOS",
+    "volumes": [],
+    "docker": {
+      "image": "minyk/dcos-etcd:dev",
+      "forcePullImage": true
+    }
+  }
+}
