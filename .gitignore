@@ -61,3 +61,7 @@ frameworks/*/*-universe-url*
 
 # OS X
 .DS_Store
+
+# docker
+frameworks/etcd/docker/*.zip
+frameworks/etcd/docker/*.tar.gz
