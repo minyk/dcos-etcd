@@ -5,6 +5,8 @@ ETCD Scheduler for DC/OS
 
 ![Image of schduler](frameworks/etcd/docs/etcd-scheduler.png)
 
+* etcd client endpoint: `client.<etcd-frameworkname>.l4lb.thisdcos.directory:2379`
+
 # How to use 
 ## Build
 ```bash
@@ -60,4 +62,5 @@ ENTRYPOINT ["/entrypoint.sh"]
 * ETCD Docker image is static: `quay.io/coreos/etcd:v3.2`
 * ETCD node count is static: `3`
 * Scheduler does not provide cli extension.
-* Scheduler does not provide endpoint to etcd. You can find etcd at `etcd-0-node.<framework-name>.autoip.dcos.thisdcos.directory`.
+* ~~Scheduler does not provide endpoint to etcd. You can find etcd at `etcd-0-node.<framework-name>.autoip.dcos.thisdcos.directory`.~~
+* Scheduler does not provide a way to configure etcd servers.
