@@ -2,6 +2,7 @@ name: {{FRAMEWORK_NAME}}
 scheduler:
   principal: {{FRAMEWORK_PRINCIPAL}}
   user: {{FRAMEWORK_USER}}
+  zookeeper: master.mesos:2181
 pods:
   etcd:
     uris:
@@ -32,5 +33,25 @@ pods:
         ports:
           client:
             port: 2379
+            vip:
+              prefix: client
+              port: 2379
           peer:
             port: 2380
+plans:
+  deploy:
+    strategy: serial
+    phases:
+      node-deploy:
+        strategy: parallel
+        pod: etcd
+        steps:
+          - default: [[node]]
+  replace:
+    strategy: serial
+    phases:
+      node-deploy:
+        strategy: serial
+        pod: etcd
+        steps:
+          - default: [[node]]
