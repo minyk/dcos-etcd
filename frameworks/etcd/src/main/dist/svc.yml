@@ -2,7 +2,7 @@ name: {{FRAMEWORK_NAME}}
 scheduler:
   principal: {{FRAMEWORK_PRINCIPAL}}
   user: {{FRAMEWORK_USER}}
-  zookeeper: master.mesos:2181
+  zookeeper: {{ZOOKEEPER_HOST}}
 pods:
   etcd:
     uris:
