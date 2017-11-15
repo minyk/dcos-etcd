@@ -20,6 +20,7 @@
     "FRAMEWORK_USER": "root",
     "FRAMEWORK_PRINCIPAL": "etcd",
     "FRAMEWORK_LOG_LEVEL": "INFO",
+    "ZOOKEEPER_HOST": "master.mesos:2181",
     "NODE_COUNT": "3",
     "NODE_PLACEMENT": "hostname:UNIQUE",
     "ETCD_IMAGE": "quay.io/coreos/etcd:v3.2",
