@@ -25,7 +25,7 @@ pods:
                 --listen-peer-urls http://${MESOS_CONTAINER_IP}:2380 \
                 --listen-client-urls http://${MESOS_CONTAINER_IP}:2379,http://127.0.0.1:2379 \
                 --advertise-client-urls http://${MESOS_CONTAINER_IP}:2379 \
-                --initial-cluster-token etcd-cluster-1 \
+                --initial-cluster-token ${FRAMEWORK_NAME} \
                 --initial-cluster etcd-0-node=http://etcd-0-node.${FRAMEWORK_HOST}:2380,etcd-1-node=http://etcd-1-node.${FRAMEWORK_HOST}:2380,etcd-2-node=http://etcd-2-node.${FRAMEWORK_HOST}:2380 \
                 --initial-cluster-state new"
         cpus: {{NODE_CPUS}}
