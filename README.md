@@ -6,6 +6,7 @@ ETCD Scheduler for DC/OS
 ![Image of schduler](frameworks/etcd/docs/etcd-scheduler.png)
 
 * etcd client endpoint: `client.<etcd-frameworkname>.l4lb.thisdcos.directory:2379`
+ * If service is running under the sub group, endpoint is: `client.<subgroup><servicename>.l4lb.thisdcos.directory:2379`
 
 # How to use 
 ## Build
@@ -35,7 +36,8 @@ $ ./build.sh
 
 ## Use pre-built docker image
 
-* Use `minyk/dcos-etcd:dev` from Docker hub, and marathon.json(frameworks/etcd/docker/marathon.json).
+* Use `minyk/dcos-etcd:v0.1` from Docker hub, and marathon.json(frameworks/etcd/docker/marathon.json).
+ * See also marathon-subgroup.json
 * Dockerfile: 
 ```dockerfile
 FROM centos:7.3.1611
