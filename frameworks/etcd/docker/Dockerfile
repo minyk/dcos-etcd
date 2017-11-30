@@ -6,10 +6,10 @@ COPY etcd-scheduler.zip /usr/local/dcos/etcd-scheduler.zip
 COPY executor.zip /usr/local/dcos/executor.zip
 COPY bootstrap.zip /usr/local/dcos/bootstrap.zip
 COPY libmesos-bundle-1.10-1.4-63e0814.tar.gz /usr/local/dcos/libmesos-bundle-1.10-1.4-63e0814.tar.gz
-COPY jre-8u131-linux-x64-jce-unlimited.tar.gz /usr/local/dcos/jre-8u131-linux-x64-jce-unlimited.tar.gz
+COPY jre-8u144-linux-x64.tar.gz /usr/local/dcos/jre-8u144-linux-x64.tar.gz
 COPY entrypoint.sh /entrypoint.sh
 
-ENV JAVA_URI http://api.etcd.marathon.l4lb.thisdcos.directory/v1/files/jre-8u131-linux-x64-jce-unlimited.tar.gz
+ENV JAVA_URI http://api.etcd.marathon.l4lb.thisdcos.directory/v1/files/jre-8u144-linux-x64.tar.gz
 ENV LIBMESOS_URI http://api.etcd.marathon.l4lb.thisdcos.directory/v1/files/libmesos-bundle-1.10-1.4-63e0814.tar.gz
 ENV EXECUTOR_URI http://api.etcd.marathon.l4lb.thisdcos.directory/v1/files/executor.zip
 ENV BOOTSTRAP_URI http://api.etcd.marathon.l4lb.thisdcos.directory/v1/files/bootstrap.zip
