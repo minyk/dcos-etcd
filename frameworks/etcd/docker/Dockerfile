@@ -1,6 +1,6 @@
 FROM centos:7.3.1611
 
-RUN yum install -y unzip tar && mkdir -p /usr/share/dcos
+RUN yum install -y unzip tar net-tools && mkdir -p /usr/share/dcos
 
 COPY etcd-scheduler.zip /usr/local/dcos/etcd-scheduler.zip
 COPY executor.zip /usr/local/dcos/executor.zip
