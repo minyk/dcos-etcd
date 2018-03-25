@@ -23,7 +23,7 @@ pods:
         goal: RUNNING
         cmd: "./bootstrap -print-env=true -resolve-hosts etcd-0-node.${FRAMEWORK_HOST},etcd-1-node.${FRAMEWORK_HOST},etcd-2-node.${FRAMEWORK_HOST} && etcd --name ${TASK_NAME} --initial-advertise-peer-urls http://${MESOS_CONTAINER_IP}:2380 \
                 --listen-peer-urls http://${MESOS_CONTAINER_IP}:2380 \
-                --listen-client-urls http://${MESOS_CONTAINER_IP}:2379,http://127.0.0.1:2379 \
+                --listen-client-urls http://${MESOS_CONTAINER_IP}:2379 \
                 --advertise-client-urls http://${MESOS_CONTAINER_IP}:2379 \
                 --initial-cluster-token ${FRAMEWORK_NAME} \
                 --initial-cluster etcd-0-node=http://etcd-0-node.${FRAMEWORK_HOST}:2380,etcd-1-node=http://etcd-1-node.${FRAMEWORK_HOST}:2380,etcd-2-node=http://etcd-2-node.${FRAMEWORK_HOST}:2380 \
