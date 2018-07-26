@@ -1,5 +1,6 @@
 package com.mesosphere.sdk.etcd.scheduler;
 
+import com.mesosphere.sdk.etcd.api.ETCDStatusResource;
 import com.mesosphere.sdk.scheduler.*;
 import com.mesosphere.sdk.specification.DefaultServiceSpec;
 import com.mesosphere.sdk.specification.yaml.RawServiceSpec;
@@ -41,12 +42,13 @@ public class Main {
                 .setPlansFrom(rawServiceSpec);
 
         return schedulerBuilder
-                .setCustomResources(getResources());
+                .setCustomResources(getResources(schedulerBuilder.getServiceSpec().getName()));
     }
 
-    private static Collection<Object> getResources() {
+    private static Collection<Object> getResources(String serviceName) {
         final Collection<Object> apiResources = new ArrayList<>();
         apiResources.add(new FileResource());
+        apiResources.add(new ETCDStatusResource(serviceName));
         return apiResources;
     }
 }
